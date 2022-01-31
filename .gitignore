@@ -1,0 +1,27 @@
+.DS_STORE
+
+# Node
+node_modules
+
+# Truffle
+build
+
+# Env
+.env
+
+# Eslint
+.eslintcache
+
+# Hard hat
+artifacts
+cache
+typechain
+gas-report.txt
+
+# Solidity coverage
+coverage
+coverage.json
+.coverage*
+
+*.iml
+.idea
