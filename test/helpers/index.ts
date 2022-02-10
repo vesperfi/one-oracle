@@ -2,9 +2,7 @@ import {BigNumber} from '@ethersproject/bignumber'
 import {ethers, network} from 'hardhat'
 
 export const HOUR = BigNumber.from(60 * 60)
-export const CHAINLINK_ETH_AGGREGATOR_ADDRESS = '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419'
-export const CHAINLINK_BTC_AGGREGATOR_ADDRESS = '0xf4030086522a5beea4988f8ca5b36dbc97bee88c'
-export const CHAINLINK_DOGE_AGGREGATOR_ADDRESS = '0x2465cefd3b488be410b941b1d4b2767088e2a028'
+export const CHAINLINK_PRICE_FEED = '0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf'
 export const DEFAULT_TWAP_PERIOD = HOUR.mul('2')
 export const BLOCKS_PER_YEAR = 2102400
 

@@ -5,7 +5,6 @@ pragma solidity 0.8.9;
 import "./access/Governable.sol";
 import "./interface/IUniswapV3CrossPoolOracle.sol";
 import "./interface/IPriceProvider.sol";
-import "./lib/OracleHelpers.sol";
 
 contract UniswapV3PriceProvider is IPriceProvider, Governable {
     /**
@@ -26,7 +25,7 @@ contract UniswapV3PriceProvider is IPriceProvider, Governable {
     event TwapPeriodUpdated(uint32 oldTwapPeriod, uint32 newTwapPeriod);
 
     constructor(IUniswapV3CrossPoolOracle _crossPoolOracle, uint32 _twapPeriod) {
-        require(address(_crossPoolOracle) != address(0), "null-cross0pool-oracle-address");
+        require(address(_crossPoolOracle) != address(0), "zero-cross0pool-oracle-address");
         crossPoolOracle = _crossPoolOracle;
         twapPeriod = _twapPeriod;
     }
@@ -40,6 +39,7 @@ contract UniswapV3PriceProvider is IPriceProvider, Governable {
         twapPeriod = _newTwapPeriod;
     }
 
+    /// @inheritdoc IPriceProvider
     function quote(
         address _tokenIn,
         address _tokenOut,
@@ -49,6 +49,7 @@ contract UniswapV3PriceProvider is IPriceProvider, Governable {
         _lastUpdatedAt = block.timestamp;
     }
 
+    //solhint-disable no-empty-blocks
     function quoteTokenToUsd(address token, uint256 _amount)
         external
         view

@@ -4,14 +4,8 @@ import {parseEther, parseUnits} from '@ethersproject/units'
 import {SignerWithAddress} from '@nomiclabs/hardhat-ethers/signers'
 import {expect} from 'chai'
 import {ethers} from 'hardhat'
-import {ChainlinkPriceProvider, ChainlinkPriceProvider__factory} from '../../typechain'
-import {
-  CHAINLINK_DOGE_AGGREGATOR_ADDRESS,
-  CHAINLINK_BTC_AGGREGATOR_ADDRESS,
-  CHAINLINK_ETH_AGGREGATOR_ADDRESS,
-  enableForking,
-  disableForking,
-} from './helpers'
+import {ChainlinkPriceProvider, ChainlinkPriceProvider__factory} from '../typechain'
+import {CHAINLINK_PRICE_FEED, enableForking, disableForking} from './helpers'
 
 const abi = new ethers.utils.AbiCoder()
 
@@ -30,7 +24,7 @@ describe('ChainlinkPriceProvider', function () {
     ;[deployer] = await ethers.getSigners()
 
     const priceProviderFactory = new ChainlinkPriceProvider__factory(deployer)
-    priceProvider = await priceProviderFactory.deploy()
+    priceProvider = await priceProviderFactory.deploy(CHAINLINK_PRICE_FEED)
     await priceProvider.deployed()
   })
 
@@ -38,63 +32,7 @@ describe('ChainlinkPriceProvider', function () {
     await ethers.provider.send('evm_revert', [snapshotId])
   })
 
-  describe('DOGE oracle ', function () {
-    beforeEach(async function () {
-      assetData = abi.encode(['address', 'uint256'], [CHAINLINK_DOGE_AGGREGATOR_ADDRESS, 18])
-    })
-
-    it('convertToUsd', async function () {
-      const {_amountInUsd} = await priceProvider.convertToUsd(assetData, parseEther('1'))
-      expect(_amountInUsd).eq('24128635')
-    })
-
-    it('convertFromUsd', async function () {
-      const {_amount} = await priceProvider.convertFromUsd(assetData, '24128635')
-      expect(_amount).eq(parseEther('1'))
-    })
-  })
-
-  describe('BTC oracle ', function () {
-    beforeEach(async function () {
-      assetData = abi.encode(['address', 'uint256'], [CHAINLINK_BTC_AGGREGATOR_ADDRESS, 8])
-    })
-
-    it('convertToUsd', async function () {
-      const {_amountInUsd} = await priceProvider.convertToUsd(assetData, parseUnits('1', 8))
-      expect(_amountInUsd).eq('5024100000000')
-    })
-
-    it('convertFromUsd', async function () {
-      const {_amount} = await priceProvider.convertFromUsd(assetData, '5024100000000')
-      expect(_amount).eq(parseUnits('1', 8))
-    })
-  })
-
-  describe('ETH oracle ', function () {
-    beforeEach(async function () {
-      assetData = abi.encode(['address', 'uint256'], [CHAINLINK_ETH_AGGREGATOR_ADDRESS, 18])
-    })
-
-    it('convertToUsd', async function () {
-      const {_amountInUsd} = await priceProvider.convertToUsd(assetData, parseEther('1'))
-      expect(_amountInUsd).eq('346104760640')
-    })
-
-    it('convertFromUsd', async function () {
-      const {_amount} = await priceProvider.convertFromUsd(assetData, '346104760640')
-      expect(_amount).eq(parseEther('1'))
-    })
-  })
-
   describe('convert', function () {
-    it('should get Token->Token price', async function () {
-      const tokenIn = abi.encode(['address', 'uint256'], [CHAINLINK_BTC_AGGREGATOR_ADDRESS, 8])
-      const tokenOut = abi.encode(['address', 'uint256'], [CHAINLINK_ETH_AGGREGATOR_ADDRESS, 18])
-      const amountIn = parseUnits('1', 8) // 1 BTC
-      const {_amountOut} = await priceProvider.convert(tokenIn, tokenOut, amountIn)
-
-      // @ts-ignore
-      expect(_amountOut).closeTo(parseEther('14.5'), parseEther('0.05'))
-    })
+    it('should get Token->Token price', async function () {})
   })
 })

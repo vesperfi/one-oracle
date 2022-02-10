@@ -1,7 +1,7 @@
 {
-  "name": "vesper-synth",
-  "version": "0.0.1",
-  "description": "Vesper Synth",
+  "name": "one-oracle",
+  "version": "1.0.0",
+  "description": "Oracle wrapper of different price providers",
   "license": "MIT",
   "directories": {
     "test": "test"
