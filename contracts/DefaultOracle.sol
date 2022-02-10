@@ -19,10 +19,6 @@ contract DefaultOracle is IOracle, Governable {
      */
     mapping(Provider => address) public priceProvider;
 
-    constructor(address _USDToken) {
-        USDToken = _USDToken;
-    }
-
     function setPriceProvider(Provider _provider, address _priceProvider) external onlyGovernor {
         require(address(_priceProvider) != address(0), "price-provider-address-null");
         priceProvider[_provider] = _priceProvider;
@@ -53,6 +49,7 @@ contract DefaultOracle is IOracle, Governable {
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteTokenToUsd(token, _amount);
         }
+        require(USDToken != address(0), "not-supported");
         uint256 amountOut;
         (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(token, USDToken, _amount);
         _amountInUsd = OracleHelpers.scaleDecimal(amountOut, IERC20Metadata(USDToken).decimals(), 8);
@@ -67,6 +64,7 @@ contract DefaultOracle is IOracle, Governable {
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteUsdToToken(token, _amountInUsd);
         }
+        require(USDToken != address(0), "not-supported");
         uint256 amountIn = OracleHelpers.scaleDecimal(_amountInUsd, 8, IERC20Metadata(USDToken).decimals());
         (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(USDToken, token, amountIn);
     }
