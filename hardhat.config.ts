@@ -12,6 +12,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+const localhost = 'http://localhost'
+
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
   networks: {
@@ -19,26 +21,22 @@ const config: HardhatUserConfig = {
       saveDeployments: true,
     },
     hardhat: {
-      // Note: No need to fork yet
-      // forking: {
-      //   url: process.env.NODE_URL,
-      //   blockNumber: process.env.BLOCK_NUMBER ? parseInt(process.env.BLOCK_NUMBER) : undefined,
-      // },
-      saveDeployments: true,
+      forking: {
+        url: process.env.NODE_URL || localhost,
+        blockNumber: process.env.BLOCK_NUMBER ? parseInt(process.env.BLOCK_NUMBER) : undefined,
+      },
     },
     mainnet: {
       url: process.env.NODE_URL,
       chainId: 1,
       gas: 6700000,
-    }
+    },
   },
   paths: {
-    deploy: 'deploy/scripts',
     deployments: 'deployments',
   },
   namedAccounts: {
     deployer: process.env.DEPLOYER || 0,
-    governor: process.env.GOVERNOR || 1,
   },
   contractSizer: {
     alphaSort: true,

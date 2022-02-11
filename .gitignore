@@ -17,6 +17,7 @@ artifacts
 cache
 typechain
 gas-report.txt
+deployments/localhost
 
 # Solidity coverage
 coverage

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable camelcase */
-import {parseEther, parseUnits} from '@ethersproject/units'
+import {parseEther} from '@ethersproject/units'
 import {SignerWithAddress} from '@nomiclabs/hardhat-ethers/signers'
 import {expect} from 'chai'
 import {ethers} from 'hardhat'
 import {ChainlinkPriceProvider, ChainlinkPriceProvider__factory} from '../typechain'
-import {CHAINLINK_PRICE_FEED, enableForking, disableForking} from './helpers'
+import {enableForking, disableForking} from './helpers'
 import Address from '../helpers/address'
-const {WETH_ADDRESS, WBTC_ADDRESS} = Address
+const {CHAINLINK_PRICE_FEED, WETH_ADDRESS, WBTC_ADDRESS} = Address
 
 describe('ChainlinkPriceProvider', function () {
   let snapshotId: string
