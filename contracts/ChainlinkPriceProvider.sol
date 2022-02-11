@@ -17,10 +17,23 @@ contract ChainlinkPriceProvider is IPriceProvider, Governable {
     // chainlink follows https://en.wikipedia.org/wiki/ISO_4217
     address public constant USD = address(840);
     FeedRegistryInterface public immutable priceFeed;
+    address public immutable weth;
+    address public immutable wbtc;
+    address private constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+    address private constant BTC = 0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB;
 
-    constructor(FeedRegistryInterface _priceFeed) {
+    // For multi chain support take all input in constructor instead of defining constant
+    constructor(
+        FeedRegistryInterface _priceFeed,
+        address _weth,
+        address _wbtc
+    ) {
         require(address(_priceFeed) != address(0), "zero-feed-address");
+        require(address(_weth) != address(0), "zero-weth-address");
+        require(address(_wbtc) != address(0), "zero-wbtc-address");
         priceFeed = _priceFeed;
+        weth = _weth;
+        wbtc = _wbtc;
     }
 
     /// @inheritdoc IPriceProvider
@@ -57,6 +70,12 @@ contract ChainlinkPriceProvider is IPriceProvider, Governable {
     }
 
     function _getPriceOfAsset(address _token) private view returns (uint256, uint256) {
+        // Chainlink price feed use ETH and BTC as token address
+        if (_token == weth) {
+            _token = ETH;
+        } else if (_token == wbtc) {
+            _token = BTC;
+        }
         (, int256 _price, , uint256 _lastUpdatedAt, ) = priceFeed.latestRoundData(_token, USD);
         return (SafeCast.toUint256(_price), _lastUpdatedAt);
     }
