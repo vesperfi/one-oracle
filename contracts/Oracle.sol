@@ -11,7 +11,7 @@ import "./lib/OracleHelpers.sol";
 /**
  * @title Oracle contract that encapsulates 3rd-party oracles.
  */
-contract DefaultOracle is IOracle, Governable {
+contract Oracle is IOracle, Governable {
     address public usdToken;
    
     mapping(Provider => address) public priceProvider;
@@ -62,6 +62,7 @@ contract DefaultOracle is IOracle, Governable {
         require(usdToken != address(0), "not-supported");
         uint256 amountOut;
         (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(token, usdToken, _amount);
+        // USD amount is 8 decimal
         _amountInUsd = OracleHelpers.scaleDecimal(amountOut, IERC20Metadata(usdToken).decimals(), 8);
     }
 
@@ -76,6 +77,7 @@ contract DefaultOracle is IOracle, Governable {
             return IPriceProvider(priceProvider[_provider]).quoteUsdToToken(token, _amountInUsd);
         }
         require(usdToken != address(0), "not-supported");
+        // USD amount is 8 decimal
         uint256 amountIn = OracleHelpers.scaleDecimal(_amountInUsd, 8, IERC20Metadata(usdToken).decimals());
         (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(usdToken, token, amountIn);
     }

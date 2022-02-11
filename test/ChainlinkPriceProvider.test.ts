@@ -6,14 +6,13 @@ import {expect} from 'chai'
 import {ethers} from 'hardhat'
 import {ChainlinkPriceProvider, ChainlinkPriceProvider__factory} from '../typechain'
 import {CHAINLINK_PRICE_FEED, enableForking, disableForking} from './helpers'
-
-const abi = new ethers.utils.AbiCoder()
+import Address from '../helpers/address'
+const {WETH_ADDRESS, WBTC_ADDRESS} = Address
 
 describe('ChainlinkPriceProvider', function () {
   let snapshotId: string
   let deployer: SignerWithAddress
   let priceProvider: ChainlinkPriceProvider
-  let assetData: string
 
   before(enableForking)
 
@@ -24,7 +23,7 @@ describe('ChainlinkPriceProvider', function () {
     ;[deployer] = await ethers.getSigners()
 
     const priceProviderFactory = new ChainlinkPriceProvider__factory(deployer)
-    priceProvider = await priceProviderFactory.deploy(CHAINLINK_PRICE_FEED)
+    priceProvider = await priceProviderFactory.deploy(CHAINLINK_PRICE_FEED, WETH_ADDRESS, WBTC_ADDRESS)
     await priceProvider.deployed()
   })
 
@@ -33,6 +32,10 @@ describe('ChainlinkPriceProvider', function () {
   })
 
   describe('convert', function () {
-    it('should get Token->Token price', async function () {})
+    it('convert same token to same token', async function () {
+      const amountIn = parseEther('100')
+      const {_amountOut} = await priceProvider.quote(WETH_ADDRESS, WETH_ADDRESS, amountIn)
+      expect(_amountOut).to.be.equal(amountIn, 'Amount out is wrong')
+    })
   })
 })
