@@ -15,24 +15,17 @@ import "./interface/IPriceProvider.sol";
  * @title UniswapV2 (and forks) TWAP Oracle implementation
  * Based on https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol
  */
-// fixed window oracle that recomputes the average price for the entire period once every period
-// note that the price average is only guaranteed to be over at least 1 period, but may be over a longer period
 contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
     using FixedPoint for *;
 
     address public immutable factory;
-    address public immutable WETH;
-    address public USDToken;
+    address public immutable weth;
     /**
      * @notice The time-weighted average price (TWAP) period
      * @dev See more: https://docs.uniswap.org/protocol/concepts/V3-overview/oracle
      */
     uint256 public twapPeriod;
 
-    /**
-     * @notice Data of pair's oracle
-     * @dev We have a default USDTOKEN:WETH pair and TOKEN:WETH for each tracked token
-     */
     struct Observation {
         address token0;
         address token1;
@@ -45,11 +38,14 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
 
     mapping(address => Observation) public observations;
 
+    /// @notice Emitted when TWAP period is updated
+    event TwapPeriodUpdated(uint256 oldTwapPeriod, uint256 newTwapPeriod);
+
     constructor(IUniswapV2Router02 _router, uint256 _twapPeriod) {
-        require(address(_router) != address(0), "null-router-address");
+        require(address(_router) != address(0), "zero-router-address");
         twapPeriod = _twapPeriod;
         factory = _router.factory();
-        WETH = _router.WETH();
+        weth = _router.WETH();
     }
 
     /**
@@ -57,9 +53,15 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
      * @param _newTwapPeriod The new period
      */
     function updateTwapPeriod(uint256 _newTwapPeriod) public onlyGovernor {
+        emit TwapPeriodUpdated(twapPeriod, _newTwapPeriod);
         twapPeriod = _newTwapPeriod;
     }
 
+    /**
+     * @notice Update cumulative and average price of token0, token1
+     * @param _token0 token0
+     * @param _token1 token1
+     */
     function update(address _token0, address _token1) public {
         address _pair = UniswapV2Library.pairFor(factory, _token0, _token1);
         if (observations[_pair].blockTimestampLast != 0) {
@@ -68,6 +70,7 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
         _updateIfNeeded(_pair);
     }
 
+    /// @inheritdoc IPriceProvider
     function quote(
         address _assetIn,
         address _assetOut,
@@ -77,13 +80,14 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
         if (_hasOracleData(address(_pair))) {
             (_amountOut, _lastUpdatedAt) = _getAmountOut(_assetIn, _assetOut, _amountIn);
         } else {
-            (_amountOut, _lastUpdatedAt) = _getAmountOut(_assetIn, WETH, _amountIn);
+            (_amountOut, _lastUpdatedAt) = _getAmountOut(_assetIn, weth, _amountIn);
             uint256 ___lastUpdatedAt_;
-            (_amountOut, ___lastUpdatedAt_) = _getAmountOut(WETH, _assetOut, _amountOut);
+            (_amountOut, ___lastUpdatedAt_) = _getAmountOut(weth, _assetOut, _amountOut);
             _lastUpdatedAt = Math.min(___lastUpdatedAt_, _lastUpdatedAt);
         }
     }
 
+    //solhint-disable no-empty-blocks
     function quoteTokenToUsd(address token, uint256 _amount)
         external
         view
