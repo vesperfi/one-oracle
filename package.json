@@ -16,7 +16,7 @@
     "compile": "hardhat compile",
     "build": "npm run clean && npm run compile",
     "coverage": "hardhat coverage",
-    "deploy": "hardhat deploy-pool",
+    "deploy": "hardhat deploy",
     "fork": "hardhat node --no-deploy",
     "test": "hardhat typechain && hardhat test",
     "verify": "hardhat etherscan-verify",
