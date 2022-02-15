@@ -1,0 +1,371 @@
+{
+  "address": "0x6D514bD3b9fd89a2147938F92b606c05DCe443D0",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract FeedRegistryInterface",
+          "name": "_priceFeed",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_weth",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_wbtc",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousGovernor",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proposedGovernor",
+          "type": "address"
+        }
+      ],
+      "name": "UpdatedGovernor",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "USD",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "acceptGovernorship",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "governor",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "priceFeed",
+      "outputs": [
+        {
+          "internalType": "contract FeedRegistryInterface",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_assetIn",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_assetOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "quote",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amountOut",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_lastUpdatedAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "quoteTokenToUsd",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amountInUsd",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_lastUpdatedAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amountInUsd",
+          "type": "uint256"
+        }
+      ],
+      "name": "quoteUsdToToken",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_lastUpdatedAt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_proposedGovernor",
+          "type": "address"
+        }
+      ],
+      "name": "transferGovernorship",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wbtc",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "weth",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd1d5378b0d1589b5c2868a4714186052ccf7cecac7b8fc4f5346638f0eac2601",
+  "receipt": {
+    "to": null,
+    "from": "0xcc4ba6Ef2aC12FA5932ef584ebc4a762FE970919",
+    "contractAddress": "0x6D514bD3b9fd89a2147938F92b606c05DCe443D0",
+    "transactionIndex": 123,
+    "gasUsed": "604935",
+    "logsBloom": "0x00000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000400000400000000000000000000000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000008000008000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000100",
+    "blockHash": "0x6d42132cf612d0733ffa0e07b85334bb7646a2cb679efce4182ee590054cbf0a",
+    "transactionHash": "0xd1d5378b0d1589b5c2868a4714186052ccf7cecac7b8fc4f5346638f0eac2601",
+    "logs": [
+      {
+        "transactionIndex": 123,
+        "blockNumber": 14212336,
+        "transactionHash": "0xd1d5378b0d1589b5c2868a4714186052ccf7cecac7b8fc4f5346638f0eac2601",
+        "address": "0x6D514bD3b9fd89a2147938F92b606c05DCe443D0",
+        "topics": [
+          "0xd4459d5b8b913cab0244230fd9b1c08b6ceace7fe9230e60d0f74cbffdf849d0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000cc4ba6ef2ac12fa5932ef584ebc4a762fe970919"
+        ],
+        "data": "0x",
+        "logIndex": 159,
+        "blockHash": "0x6d42132cf612d0733ffa0e07b85334bb7646a2cb679efce4182ee590054cbf0a"
+      }
+    ],
+    "blockNumber": 14212336,
+    "cumulativeGasUsed": "9266208",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x47Fb2585D2C56Fe188D0E6ec628a38b74fCeeeDf",
+    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "0cf63522f4d165bf4001033f6d2eeadf",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract FeedRegistryInterface\",\"name\":\"_priceFeed\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_weth\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_wbtc\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousGovernor\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proposedGovernor\",\"type\":\"address\"}],\"name\":\"UpdatedGovernor\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"USD\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptGovernorship\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"governor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"priceFeed\",\"outputs\":[{\"internalType\":\"contract FeedRegistryInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_assetIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_assetOut\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amountIn\",\"type\":\"uint256\"}],\"name\":\"quote\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_amountOut\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_lastUpdatedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"quoteTokenToUsd\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_amountInUsd\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_lastUpdatedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amountInUsd\",\"type\":\"uint256\"}],\"name\":\"quoteUsdToToken\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_lastUpdatedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_proposedGovernor\",\"type\":\"address\"}],\"name\":\"transferGovernorship\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wbtc\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"weth\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This contract wraps chainlink price feed\",\"kind\":\"dev\",\"methods\":{\"acceptGovernorship()\":{\"details\":\"Allows new governor to accept governorship of the contract.\"},\"quote(address,address,uint256)\":{\"params\":{\"_amountIn\":\"Amount of input token\",\"_tokenIn\":\"The address of assetIn\",\"_tokenOut\":\"The address of assetOut\"},\"returns\":{\"_amountOut\":\"Amount out\",\"_lastUpdatedAt\":\"Timestamp when price was last updated\"}},\"quoteTokenToUsd(address,uint256)\":{\"params\":{\"_amount\":\"Amount of input token.\",\"_token\":\"The address of assetIn\"},\"returns\":{\"_amountInUsd\":\"Amount in USD\",\"_lastUpdatedAt\":\"Timestamp when price was last updated\"}},\"quoteUsdToToken(address,uint256)\":{\"params\":{\"_amountInUsd\":\"Input amount in USD\",\"_token\":\"The address of assetIn\"},\"returns\":{\"_amount\":\"Output amount of token\",\"_lastUpdatedAt\":\"Timestamp when price was last updated\"}},\"transferGovernorship(address)\":{\"details\":\"Transfers governorship of the contract to a new account (`proposedGovernor`). Can only be called by the current owner.\"}},\"title\":\"ChainLink's price provider\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"quote(address,address,uint256)\":{\"notice\":\"Get quote\"},\"quoteTokenToUsd(address,uint256)\":{\"notice\":\"Get quote in USD amount\"},\"quoteUsdToToken(address,uint256)\":{\"notice\":\"Get quote from USD amount to amount of token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ChainlinkPriceProvider.sol\":\"ChainlinkPriceProvider\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"contracts/ChainlinkPriceProvider.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.9;\\n\\nimport \\\"./dependencies/openzeppelin/utils/math/Math.sol\\\";\\nimport \\\"./dependencies/openzeppelin/utils/math/SafeCast.sol\\\";\\nimport \\\"./dependencies/chainlink/interfaces/FeedRegistryInterface.sol\\\";\\nimport \\\"./interface/IPriceProvider.sol\\\";\\nimport \\\"./dependencies/openzeppelin/token/ERC20/extensions/IERC20Metadata.sol\\\";\\nimport \\\"./access/Governable.sol\\\";\\n\\n/**\\n * @title ChainLink's price provider\\n * @dev This contract wraps chainlink price feed\\n */\\ncontract ChainlinkPriceProvider is IPriceProvider, Governable {\\n    // chainlink follows https://en.wikipedia.org/wiki/ISO_4217\\n    address public constant USD = address(840);\\n    FeedRegistryInterface public immutable priceFeed;\\n    address public immutable weth;\\n    address public immutable wbtc;\\n    address private constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;\\n    address private constant BTC = 0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB;\\n\\n    // For multi chain support take all input in constructor instead of defining constant\\n    constructor(\\n        FeedRegistryInterface _priceFeed,\\n        address _weth,\\n        address _wbtc\\n    ) {\\n        require(address(_priceFeed) != address(0), \\\"zero-feed-address\\\");\\n        require(address(_weth) != address(0), \\\"zero-weth-address\\\");\\n        require(address(_wbtc) != address(0), \\\"zero-wbtc-address\\\");\\n        priceFeed = _priceFeed;\\n        weth = _weth;\\n        wbtc = _wbtc;\\n    }\\n\\n    /// @inheritdoc IPriceProvider\\n    function quote(\\n        address _assetIn,\\n        address _assetOut,\\n        uint256 _amountIn\\n    ) external view returns (uint256 _amountOut, uint256 _lastUpdatedAt) {\\n        (uint256 _amountInUsd, uint256 _lastUpdatedAt0) = quoteTokenToUsd(_assetIn, _amountIn);\\n        (_amountOut, _lastUpdatedAt) = quoteUsdToToken(_assetOut, _amountInUsd);\\n        _lastUpdatedAt = Math.min(_lastUpdatedAt0, _lastUpdatedAt);\\n    }\\n\\n    /// @inheritdoc IPriceProvider\\n    function quoteTokenToUsd(address _token, uint256 _amount)\\n        public\\n        view\\n        returns (uint256 _amountInUsd, uint256 _lastUpdatedAt)\\n    {\\n        uint256 _price;\\n        (_price, _lastUpdatedAt) = _getPriceOfAsset(_token);\\n        _amountInUsd = (_amount * _price) / 10**IERC20Metadata(_token).decimals();\\n    }\\n\\n    /// @inheritdoc IPriceProvider\\n    function quoteUsdToToken(address _token, uint256 _amountInUsd)\\n        public\\n        view\\n        returns (uint256 _amount, uint256 _lastUpdatedAt)\\n    {\\n        uint256 _price;\\n        (_price, _lastUpdatedAt) = _getPriceOfAsset(_token);\\n        _amount = (_amountInUsd * 10**IERC20Metadata(_token).decimals()) / _price;\\n    }\\n\\n    function _getPriceOfAsset(address _token) private view returns (uint256, uint256) {\\n        // Chainlink price feed use ETH and BTC as token address\\n        if (_token == weth) {\\n            _token = ETH;\\n        } else if (_token == wbtc) {\\n            _token = BTC;\\n        }\\n        (, int256 _price, , uint256 _lastUpdatedAt, ) = priceFeed.latestRoundData(_token, USD);\\n        return (SafeCast.toUint256(_price), _lastUpdatedAt);\\n    }\\n}\\n\",\"keccak256\":\"0x35ba2e78f0f8c95a688652bd7cf77ff9728ed64670961882a64d15aa9d598cf4\",\"license\":\"MIT\"},\"contracts/access/Governable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.9;\\n\\nimport \\\"../dependencies/openzeppelin/utils/Context.sol\\\";\\nimport \\\"../dependencies/openzeppelin/proxy/utils/Initializable.sol\\\";\\nimport \\\"../interface/IGovernable.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (governor) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the governor account will be the one that deploys the contract. This\\n * can later be changed with {transferGovernorship}.\\n *\\n */\\nabstract contract Governable is IGovernable, Context, Initializable {\\n    address public governor;\\n    address private proposedGovernor;\\n\\n    event UpdatedGovernor(address indexed previousGovernor, address indexed proposedGovernor);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial governor.\\n     */\\n    constructor() {\\n        address msgSender = _msgSender();\\n        governor = msgSender;\\n        emit UpdatedGovernor(address(0), msgSender);\\n    }\\n\\n    /**\\n     * @dev If inheriting child is using proxy then child contract can use\\n     * __Governable_init() function to initialization this contract\\n     */\\n    // solhint-disable-next-line func-name-mixedcase\\n    function __Governable_init() internal initializer {\\n        address msgSender = _msgSender();\\n        governor = msgSender;\\n        emit UpdatedGovernor(address(0), msgSender);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the governor.\\n     */\\n    modifier onlyGovernor() {\\n        require(governor == _msgSender(), \\\"not-governor\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Transfers governorship of the contract to a new account (`proposedGovernor`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferGovernorship(address _proposedGovernor) external onlyGovernor {\\n        require(_proposedGovernor != address(0), \\\"proposed-governor-is-zero\\\");\\n        proposedGovernor = _proposedGovernor;\\n    }\\n\\n    /**\\n     * @dev Allows new governor to accept governorship of the contract.\\n     */\\n    function acceptGovernorship() external {\\n        require(proposedGovernor == _msgSender(), \\\"not-the-proposed-governor\\\");\\n        emit UpdatedGovernor(governor, proposedGovernor);\\n        governor = proposedGovernor;\\n        proposedGovernor = address(0);\\n    }\\n}\\n\",\"keccak256\":\"0x4dd52143db9b973340b6c5718e112bda0a926feffc5900994c136b8576e96d49\",\"license\":\"MIT\"},\"contracts/dependencies/chainlink/interfaces/FeedRegistryInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\ninterface FeedRegistryInterface {\\n\\n  function decimals(address base, address quote) external view returns (uint8);\\n\\n  function description(address base, address quote) external view returns (string memory);\\n\\n  function version(address base, address quote) external view returns (uint256);\\n\\n  function latestRoundData(address base, address quote)\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n\\n  function getRoundData(\\n    address base,\\n    address quote,\\n    uint80 _roundId\\n  )\\n    external\\n    view\\n    returns (\\n      uint80 roundId,\\n      int256 answer,\\n      uint256 startedAt,\\n      uint256 updatedAt,\\n      uint80 answeredInRound\\n    );\\n}\",\"keccak256\":\"0xee83a03c8b84b389eedbe368973bed56900461d6d5c02e932c39fc6e87c8a610\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/proxy/utils/Initializable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed\\n * behind a proxy. Since a proxied contract can't have a constructor, it's common to move constructor logic to an\\n * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer\\n * function so it can only be called once. The {initializer} modifier provided by this contract will have this effect.\\n *\\n * TIP: To avoid leaving the proxy in an uninitialized state, the initializer function should be called as early as\\n * possible by providing the encoded function call as the `_data` argument to {ERC1967Proxy-constructor}.\\n *\\n * CAUTION: When used with inheritance, manual care must be taken to not invoke a parent initializer twice, or to ensure\\n * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.\\n */\\nabstract contract Initializable {\\n    /**\\n     * @dev Indicates that the contract has been initialized.\\n     */\\n    bool private _initialized;\\n\\n    /**\\n     * @dev Indicates that the contract is in the process of being initialized.\\n     */\\n    bool private _initializing;\\n\\n    /**\\n     * @dev Modifier to protect an initializer function from being invoked twice.\\n     */\\n    modifier initializer() {\\n        require(_initializing || !_initialized, \\\"Initializable: contract is already initialized\\\");\\n\\n        bool isTopLevelCall = !_initializing;\\n        if (isTopLevelCall) {\\n            _initializing = true;\\n            _initialized = true;\\n        }\\n\\n        _;\\n\\n        if (isTopLevelCall) {\\n            _initializing = false;\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address recipient, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address sender,\\n        address recipient,\\n        uint256 amount\\n    ) external returns (bool);\\n\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n}\\n\",\"keccak256\":\"0x7ba888190641647a00a9f8f1c9e5d582255e0bd8bc0bb3b1c025feb78c238e37\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/token/ERC20/extensions/IERC20Metadata.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../IERC20.sol\\\";\\n\\n/**\\n * @dev Interface for the optional metadata functions from the ERC20 standard.\\n *\\n * _Available since v4.1._\\n */\\ninterface IERC20Metadata is IERC20 {\\n    /**\\n     * @dev Returns the name of the token.\\n     */\\n    function name() external view returns (string memory);\\n\\n    /**\\n     * @dev Returns the symbol of the token.\\n     */\\n    function symbol() external view returns (string memory);\\n\\n    /**\\n     * @dev Returns the decimals places of the token.\\n     */\\n    function decimals() external view returns (uint8);\\n}\\n\",\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0x90565a39ae45c80f0468dc96c7b20d0afc3055f344c8203a0c9258239f350b9f\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/utils/math/Math.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Standard math utilities missing in the Solidity language.\\n */\\nlibrary Math {\\n    /**\\n     * @dev Returns the largest of two numbers.\\n     */\\n    function max(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a >= b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the smallest of two numbers.\\n     */\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a < b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the average of two numbers. The result is rounded towards\\n     * zero.\\n     */\\n    function average(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b) / 2 can overflow.\\n        return (a & b) + (a ^ b) / 2;\\n    }\\n\\n    /**\\n     * @dev Returns the ceiling of the division of two numbers.\\n     *\\n     * This differs from standard division with `/` in that it rounds up instead\\n     * of rounding down.\\n     */\\n    function ceilDiv(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b - 1) / b can overflow on addition, so we distribute.\\n        return a / b + (a % b == 0 ? 0 : 1);\\n    }\\n}\\n\",\"keccak256\":\"0x49ebdac5d515aebb95168564158940b79d7d5d12fbfe59cec546a00d57fee64a\",\"license\":\"MIT\"},\"contracts/dependencies/openzeppelin/utils/math/SafeCast.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Wrappers over Solidity's uintXX/intXX casting operators with added overflow\\n * checks.\\n *\\n * Downcasting from uint256/int256 in Solidity does not revert on overflow. This can\\n * easily result in undesired exploitation or bugs, since developers usually\\n * assume that overflows raise errors. `SafeCast` restores this intuition by\\n * reverting the transaction when such an operation overflows.\\n *\\n * Using this library instead of the unchecked operations eliminates an entire\\n * class of bugs, so it's recommended to use it always.\\n *\\n * Can be combined with {SafeMath} and {SignedSafeMath} to extend it to smaller types, by performing\\n * all math on `uint256` and `int256` and then downcasting.\\n */\\nlibrary SafeCast {\\n    /**\\n     * @dev Returns the downcasted uint224 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint224).\\n     *\\n     * Counterpart to Solidity's `uint224` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 224 bits\\n     */\\n    function toUint224(uint256 value) internal pure returns (uint224) {\\n        require(value <= type(uint224).max, \\\"SafeCast: value doesn't fit in 224 bits\\\");\\n        return uint224(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint128 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint128).\\n     *\\n     * Counterpart to Solidity's `uint128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     */\\n    function toUint128(uint256 value) internal pure returns (uint128) {\\n        require(value <= type(uint128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return uint128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint96 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint96).\\n     *\\n     * Counterpart to Solidity's `uint96` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 96 bits\\n     */\\n    function toUint96(uint256 value) internal pure returns (uint96) {\\n        require(value <= type(uint96).max, \\\"SafeCast: value doesn't fit in 96 bits\\\");\\n        return uint96(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint64 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint64).\\n     *\\n     * Counterpart to Solidity's `uint64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     */\\n    function toUint64(uint256 value) internal pure returns (uint64) {\\n        require(value <= type(uint64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return uint64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint32 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint32).\\n     *\\n     * Counterpart to Solidity's `uint32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     */\\n    function toUint32(uint256 value) internal pure returns (uint32) {\\n        require(value <= type(uint32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return uint32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint16 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint16).\\n     *\\n     * Counterpart to Solidity's `uint16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     */\\n    function toUint16(uint256 value) internal pure returns (uint16) {\\n        require(value <= type(uint16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return uint16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint8 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint8).\\n     *\\n     * Counterpart to Solidity's `uint8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     */\\n    function toUint8(uint256 value) internal pure returns (uint8) {\\n        require(value <= type(uint8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return uint8(value);\\n    }\\n\\n    /**\\n     * @dev Converts a signed int256 into an unsigned uint256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be greater than or equal to 0.\\n     */\\n    function toUint256(int256 value) internal pure returns (uint256) {\\n        require(value >= 0, \\\"SafeCast: value must be positive\\\");\\n        return uint256(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int128 from int256, reverting on\\n     * overflow (when the input is less than smallest int128 or\\n     * greater than largest int128).\\n     *\\n     * Counterpart to Solidity's `int128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt128(int256 value) internal pure returns (int128) {\\n        require(value >= type(int128).min && value <= type(int128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return int128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int64 from int256, reverting on\\n     * overflow (when the input is less than smallest int64 or\\n     * greater than largest int64).\\n     *\\n     * Counterpart to Solidity's `int64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt64(int256 value) internal pure returns (int64) {\\n        require(value >= type(int64).min && value <= type(int64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return int64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int32 from int256, reverting on\\n     * overflow (when the input is less than smallest int32 or\\n     * greater than largest int32).\\n     *\\n     * Counterpart to Solidity's `int32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt32(int256 value) internal pure returns (int32) {\\n        require(value >= type(int32).min && value <= type(int32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return int32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int16 from int256, reverting on\\n     * overflow (when the input is less than smallest int16 or\\n     * greater than largest int16).\\n     *\\n     * Counterpart to Solidity's `int16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt16(int256 value) internal pure returns (int16) {\\n        require(value >= type(int16).min && value <= type(int16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return int16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int8 from int256, reverting on\\n     * overflow (when the input is less than smallest int8 or\\n     * greater than largest int8).\\n     *\\n     * Counterpart to Solidity's `int8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt8(int256 value) internal pure returns (int8) {\\n        require(value >= type(int8).min && value <= type(int8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return int8(value);\\n    }\\n\\n    /**\\n     * @dev Converts an unsigned uint256 into a signed int256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be less than or equal to maxInt256.\\n     */\\n    function toInt256(uint256 value) internal pure returns (int256) {\\n        // Note: Unsafe cast below is okay because `type(int256).max` is guaranteed to be positive\\n        require(value <= uint256(type(int256).max), \\\"SafeCast: value doesn't fit in an int256\\\");\\n        return int256(value);\\n    }\\n}\\n\",\"keccak256\":\"0x08d867b4c0bb782b9135691fa732b6846e0f133006489c3aa505abd1f6de56cb\",\"license\":\"MIT\"},\"contracts/interface/IGovernable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.9;\\n\\n/**\\n * @notice Governable interface\\n */\\ninterface IGovernable {\\n    function governor() external view returns (address _governor);\\n\\n    function transferGovernorship(address _proposedGovernor) external;\\n}\\n\",\"keccak256\":\"0xbe84461adf33aec1bf31b6d84a5380aaeb791de9a4b95346dd8270dc6632984e\",\"license\":\"MIT\"},\"contracts/interface/IPriceProvider.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.9;\\n\\ninterface IPriceProvider {\\n    /**\\n     * @notice Get quote\\n     * @param _tokenIn The address of assetIn\\n     * @param _tokenOut The address of assetOut\\n     * @param _amountIn Amount of input token\\n     * @return _amountOut Amount out\\n     * @return _lastUpdatedAt Timestamp when price was last updated\\n     */\\n    function quote(\\n        address _tokenIn,\\n        address _tokenOut,\\n        uint256 _amountIn\\n    ) external view returns (uint256 _amountOut, uint256 _lastUpdatedAt);\\n\\n    /**\\n     * @notice Get quote in USD amount\\n     * @param _token The address of assetIn\\n     * @param _amount Amount of input token.\\n     * @return _amountInUsd Amount in USD\\n     * @return _lastUpdatedAt Timestamp when price was last updated\\n     */\\n    function quoteTokenToUsd(address _token, uint256 _amount)\\n        external\\n        view\\n        returns (uint256 _amountInUsd, uint256 _lastUpdatedAt);\\n\\n    /**\\n     * @notice Get quote from USD amount to amount of token\\n     * @param _token The address of assetIn\\n     * @param _amountInUsd Input amount in USD\\n     * @return _amount Output amount of token\\n     * @return _lastUpdatedAt Timestamp when price was last updated\\n     */\\n    function quoteUsdToToken(address _token, uint256 _amountInUsd)\\n        external\\n        view\\n        returns (uint256 _amount, uint256 _lastUpdatedAt);\\n}\\n\",\"keccak256\":\"0xf6d0de978e5f6540d422c283577bb5042b89a3ca3689c60a8b1ef1fa0672faa2\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60e060405234801561001057600080fd5b50604051610b8c380380610b8c83398101604081905261002f91610191565b6000805462010000600160b01b03191633620100008102919091178255604051909182917fd4459d5b8b913cab0244230fd9b1c08b6ceace7fe9230e60d0f74cbffdf849d0908290a3506001600160a01b0383166100c85760405162461bcd60e51b81526020600482015260116024820152707a65726f2d666565642d6164647265737360781b60448201526064015b60405180910390fd5b6001600160a01b0382166101125760405162461bcd60e51b81526020600482015260116024820152707a65726f2d776574682d6164647265737360781b60448201526064016100bf565b6001600160a01b03811661015c5760405162461bcd60e51b81526020600482015260116024820152707a65726f2d776274632d6164647265737360781b60448201526064016100bf565b6001600160a01b0392831660805290821660a0521660c0526101de565b6001600160a01b038116811461018e57600080fd5b50565b6000806000606084860312156101a657600080fd5b83516101b181610179565b60208501519093506101c281610179565b60408501519092506101d381610179565b809150509250925092565b60805160a05160c05161096b6102216000396000818160e7015261053a01526000818161010e01526104e401526000818161013501526105b6015261096b6000f3fe608060405234801561001057600080fd5b506004361061009e5760003560e01c80638d0dba00116100665780638d0dba0014610157578063b5e9bef51461017f578063b646638414610192578063b6aa515b146101a5578063f3b27bc3146101ba57600080fd5b80630c340a24146100a35780631bf6c21b146100d95780633cdc5389146100e25780633fc8cef314610109578063741bef1a14610130575b600080fd5b6000546100bc906201000090046001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100bc61034881565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b61016a6101653660046106d6565b6101c2565b604080519283526020830191909152016100d0565b61016a61018d3660046106d6565b610272565b61016a6101a0366004610700565b61030f565b6101b86101b336600461073c565b610348565b005b6101b8610411565b60008060006101d0856104df565b8093508192505050846001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b15801561021157600080fd5b505afa158015610225573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102499190610757565b61025490600a61087b565b61025e828661088a565b61026891906108a9565b9250509250929050565b6000806000610280856104df565b809350819250505080856001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b1580156102c257600080fd5b505afa1580156102d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102fa9190610757565b61030590600a61087b565b61025e908661088a565b60008060008061031f87866101c2565b9150915061032d8683610272565b909450925061033c818461064a565b92505050935093915050565b6000546001600160a01b036201000090910416331461039d5760405162461bcd60e51b815260206004820152600c60248201526b3737ba16b3b7bb32b93737b960a11b60448201526064015b60405180910390fd5b6001600160a01b0381166103ef5760405162461bcd60e51b815260206004820152601960248201527870726f706f7365642d676f7665726e6f722d69732d7a65726f60381b6044820152606401610394565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001546001600160a01b031633146104675760405162461bcd60e51b81526020600482015260196024820152783737ba16ba343296b83937b837b9b2b216b3b7bb32b93737b960391b6044820152606401610394565b600154600080546040516001600160a01b039384169362010000909204909116917fd4459d5b8b913cab0244230fd9b1c08b6ceace7fe9230e60d0f74cbffdf849d091a3600180546000805462010000600160b01b0319166001600160a01b03831662010000021790556001600160a01b0319169055565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316836001600160a01b031614156105385773eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee925061058a565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316836001600160a01b0316141561058a5773bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb92505b60405163bcfd032d60e01b81526001600160a01b038481166004830152610348602483015260009182917f0000000000000000000000000000000000000000000000000000000000000000169063bcfd032d9060440160a06040518083038186803b1580156105f857600080fd5b505afa15801561060c573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061063091906108e5565b5093505092505061064082610664565b9590945092505050565b6000818310610659578161065b565b825b90505b92915050565b6000808212156106b65760405162461bcd60e51b815260206004820181905260248201527f53616665436173743a2076616c7565206d75737420626520706f7369746976656044820152606401610394565b5090565b80356001600160a01b03811681146106d157600080fd5b919050565b600080604083850312156106e957600080fd5b6106f2836106ba565b946020939093013593505050565b60008060006060848603121561071557600080fd5b61071e846106ba565b925061072c602085016106ba565b9150604084013590509250925092565b60006020828403121561074e57600080fd5b61065b826106ba565b60006020828403121561076957600080fd5b815160ff8116811461077a57600080fd5b9392505050565b634e487b7160e01b600052601160045260246000fd5b600181815b808511156107d25781600019048211156107b8576107b8610781565b808516156107c557918102915b93841c939080029061079c565b509250929050565b6000826107e95750600161065e565b816107f65750600061065e565b816001811461080c576002811461081657610832565b600191505061065e565b60ff84111561082757610827610781565b50506001821b61065e565b5060208310610133831016604e8410600b8410161715610855575081810a61065e565b61085f8383610797565b806000190482111561087357610873610781565b029392505050565b600061065b60ff8416836107da565b60008160001904831182151516156108a4576108a4610781565b500290565b6000826108c657634e487b7160e01b600052601260045260246000fd5b500490565b805169ffffffffffffffffffff811681146106d157600080fd5b600080600080600060a086880312156108fd57600080fd5b610906866108cb565b9450602086015193506040860151925060608601519150610929608087016108cb565b9050929550929590935056fea26469706673582212205073dc1d1bc78e785db75916ebf5d5ce4d108350ada5c110a2770c1d36c618a764736f6c63430008090033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061009e5760003560e01c80638d0dba00116100665780638d0dba0014610157578063b5e9bef51461017f578063b646638414610192578063b6aa515b146101a5578063f3b27bc3146101ba57600080fd5b80630c340a24146100a35780631bf6c21b146100d95780633cdc5389146100e25780633fc8cef314610109578063741bef1a14610130575b600080fd5b6000546100bc906201000090046001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100bc61034881565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b6100bc7f000000000000000000000000000000000000000000000000000000000000000081565b61016a6101653660046106d6565b6101c2565b604080519283526020830191909152016100d0565b61016a61018d3660046106d6565b610272565b61016a6101a0366004610700565b61030f565b6101b86101b336600461073c565b610348565b005b6101b8610411565b60008060006101d0856104df565b8093508192505050846001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b15801561021157600080fd5b505afa158015610225573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102499190610757565b61025490600a61087b565b61025e828661088a565b61026891906108a9565b9250509250929050565b6000806000610280856104df565b809350819250505080856001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b1580156102c257600080fd5b505afa1580156102d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102fa9190610757565b61030590600a61087b565b61025e908661088a565b60008060008061031f87866101c2565b9150915061032d8683610272565b909450925061033c818461064a565b92505050935093915050565b6000546001600160a01b036201000090910416331461039d5760405162461bcd60e51b815260206004820152600c60248201526b3737ba16b3b7bb32b93737b960a11b60448201526064015b60405180910390fd5b6001600160a01b0381166103ef5760405162461bcd60e51b815260206004820152601960248201527870726f706f7365642d676f7665726e6f722d69732d7a65726f60381b6044820152606401610394565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001546001600160a01b031633146104675760405162461bcd60e51b81526020600482015260196024820152783737ba16ba343296b83937b837b9b2b216b3b7bb32b93737b960391b6044820152606401610394565b600154600080546040516001600160a01b039384169362010000909204909116917fd4459d5b8b913cab0244230fd9b1c08b6ceace7fe9230e60d0f74cbffdf849d091a3600180546000805462010000600160b01b0319166001600160a01b03831662010000021790556001600160a01b0319169055565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316836001600160a01b031614156105385773eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee925061058a565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316836001600160a01b0316141561058a5773bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb92505b60405163bcfd032d60e01b81526001600160a01b038481166004830152610348602483015260009182917f0000000000000000000000000000000000000000000000000000000000000000169063bcfd032d9060440160a06040518083038186803b1580156105f857600080fd5b505afa15801561060c573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061063091906108e5565b5093505092505061064082610664565b9590945092505050565b6000818310610659578161065b565b825b90505b92915050565b6000808212156106b65760405162461bcd60e51b815260206004820181905260248201527f53616665436173743a2076616c7565206d75737420626520706f7369746976656044820152606401610394565b5090565b80356001600160a01b03811681146106d157600080fd5b919050565b600080604083850312156106e957600080fd5b6106f2836106ba565b946020939093013593505050565b60008060006060848603121561071557600080fd5b61071e846106ba565b925061072c602085016106ba565b9150604084013590509250925092565b60006020828403121561074e57600080fd5b61065b826106ba565b60006020828403121561076957600080fd5b815160ff8116811461077a57600080fd5b9392505050565b634e487b7160e01b600052601160045260246000fd5b600181815b808511156107d25781600019048211156107b8576107b8610781565b808516156107c557918102915b93841c939080029061079c565b509250929050565b6000826107e95750600161065e565b816107f65750600061065e565b816001811461080c576002811461081657610832565b600191505061065e565b60ff84111561082757610827610781565b50506001821b61065e565b5060208310610133831016604e8410600b8410161715610855575081810a61065e565b61085f8383610797565b806000190482111561087357610873610781565b029392505050565b600061065b60ff8416836107da565b60008160001904831182151516156108a4576108a4610781565b500290565b6000826108c657634e487b7160e01b600052601260045260246000fd5b500490565b805169ffffffffffffffffffff811681146106d157600080fd5b600080600080600060a086880312156108fd57600080fd5b610906866108cb565b9450602086015193506040860151925060608601519150610929608087016108cb565b9050929550929590935056fea26469706673582212205073dc1d1bc78e785db75916ebf5d5ce4d108350ada5c110a2770c1d36c618a764736f6c63430008090033",
+  "devdoc": {
+    "details": "This contract wraps chainlink price feed",
+    "kind": "dev",
+    "methods": {
+      "acceptGovernorship()": {
+        "details": "Allows new governor to accept governorship of the contract."
+      },
+      "quote(address,address,uint256)": {
+        "params": {
+          "_amountIn": "Amount of input token",
+          "_tokenIn": "The address of assetIn",
+          "_tokenOut": "The address of assetOut"
+        },
+        "returns": {
+          "_amountOut": "Amount out",
+          "_lastUpdatedAt": "Timestamp when price was last updated"
+        }
+      },
+      "quoteTokenToUsd(address,uint256)": {
+        "params": {
+          "_amount": "Amount of input token.",
+          "_token": "The address of assetIn"
+        },
+        "returns": {
+          "_amountInUsd": "Amount in USD",
+          "_lastUpdatedAt": "Timestamp when price was last updated"
+        }
+      },
+      "quoteUsdToToken(address,uint256)": {
+        "params": {
+          "_amountInUsd": "Input amount in USD",
+          "_token": "The address of assetIn"
+        },
+        "returns": {
+          "_amount": "Output amount of token",
+          "_lastUpdatedAt": "Timestamp when price was last updated"
+        }
+      },
+      "transferGovernorship(address)": {
+        "details": "Transfers governorship of the contract to a new account (`proposedGovernor`). Can only be called by the current owner."
+      }
+    },
+    "title": "ChainLink's price provider",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "quote(address,address,uint256)": {
+        "notice": "Get quote"
+      },
+      "quoteTokenToUsd(address,uint256)": {
+        "notice": "Get quote in USD amount"
+      },
+      "quoteUsdToToken(address,uint256)": {
+        "notice": "Get quote from USD amount to amount of token"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2264,
+        "contract": "contracts/ChainlinkPriceProvider.sol:ChainlinkPriceProvider",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 2267,
+        "contract": "contracts/ChainlinkPriceProvider.sol:ChainlinkPriceProvider",
+        "label": "_initializing",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 1204,
+        "contract": "contracts/ChainlinkPriceProvider.sol:ChainlinkPriceProvider",
+        "label": "governor",
+        "offset": 2,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1206,
+        "contract": "contracts/ChainlinkPriceProvider.sol:ChainlinkPriceProvider",
+        "label": "proposedGovernor",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
