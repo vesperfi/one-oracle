@@ -10,6 +10,7 @@ import "./dependencies/uniswap/v2-periphery/libraries/UniswapV2Library.sol";
 import "./dependencies/uniswap/v2-periphery/interfaces/IUniswapV2Router02.sol";
 import "./access/Governable.sol";
 import "./interface/IPriceProvider.sol";
+
 /**
  * @title UniswapV2 (and forks) TWAP Oracle implementation
  * Based on https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol
@@ -51,7 +52,7 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
      * @notice Update TWAP period
      * @param _newTwapPeriod The new period
      */
-    function updateTwapPeriod(uint256 _newTwapPeriod) public onlyGovernor {
+    function updateTwapPeriod(uint256 _newTwapPeriod) external onlyGovernor {
         emit TwapPeriodUpdated(twapPeriod, _newTwapPeriod);
         twapPeriod = _newTwapPeriod;
     }
@@ -61,7 +62,7 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
      * @param _token0 token0
      * @param _token1 token1
      */
-    function update(address _token0, address _token1) public {
+    function update(address _token0, address _token1) external {
         address _pair = UniswapV2Library.pairFor(factory, _token0, _token1);
         if (observations[_pair].blockTimestampLast == 0) {
             _addOracleFor(IUniswapV2Pair(_pair));
@@ -74,7 +75,7 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
         address _assetIn,
         address _assetOut,
         uint256 _amountIn
-    ) public view returns (uint256 _amountOut, uint256 _lastUpdatedAt) {
+    ) external view returns (uint256 _amountOut, uint256 _lastUpdatedAt) {
         address _pair = UniswapV2Library.pairFor(factory, _assetIn, _assetOut);
         if (_hasOracleData(address(_pair))) {
             (_amountOut, _lastUpdatedAt) = _getAmountOut(_assetIn, _assetOut, _amountIn);

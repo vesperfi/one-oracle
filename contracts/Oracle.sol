@@ -44,19 +44,19 @@ contract Oracle is IOracle, Governable {
         address _assetOut,
         uint256 _amountIn,
         Provider _provider
-    ) public view returns (uint256, uint256) {
+    ) external view returns (uint256, uint256) {
         require(priceProvider[_provider] != address(0), "invalid-provider");
         return IPriceProvider(priceProvider[_provider]).quote(_assetIn, _assetOut, _amountIn);
     }
 
-    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3. 
+    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3.
     /// Stable coin may lose pegging on-chain and may not be equal to $1.
     /// @inheritdoc IOracle
     function quoteTokenToUsd(
         address token,
         uint256 _amount,
         Provider _provider
-    ) public view returns (uint256 _amountInUsd, uint256 _lastUpdatedAt) {
+    ) external view returns (uint256 _amountInUsd, uint256 _lastUpdatedAt) {
         require(priceProvider[_provider] != address(0), "invalid-provider");
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteTokenToUsd(token, _amount);
@@ -64,7 +64,11 @@ contract Oracle is IOracle, Governable {
         require(usdEquivalentToken != address(0), "not-supported");
         uint256 amountOut;
         if (usdEquivalentToken != token) {
-            (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(token, usdEquivalentToken, _amount);
+            (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(
+                token,
+                usdEquivalentToken,
+                _amount
+            );
         } else {
             amountOut = _amount;
             _lastUpdatedAt = block.timestamp;
@@ -73,14 +77,14 @@ contract Oracle is IOracle, Governable {
         _amountInUsd = OracleHelpers.scaleDecimal(amountOut, IERC20Metadata(usdEquivalentToken).decimals(), 8);
     }
 
-    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3. 
+    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3.
     /// Stable coin may lose pegging on-chain and may not be equal to $1.
     /// @inheritdoc IOracle
     function quoteUsdToToken(
         address token,
         uint256 _amountInUsd,
         Provider _provider
-    ) public view returns (uint256 _amount, uint256 _lastUpdatedAt) {
+    ) external view returns (uint256 _amount, uint256 _lastUpdatedAt) {
         require(priceProvider[_provider] != address(0), "invalid-provider");
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteUsdToToken(token, _amountInUsd);
@@ -89,7 +93,11 @@ contract Oracle is IOracle, Governable {
         // USD amount is 8 decimal
         uint256 amountIn = OracleHelpers.scaleDecimal(_amountInUsd, 8, IERC20Metadata(usdEquivalentToken).decimals());
         if (usdEquivalentToken != token) {
-            (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(usdEquivalentToken, token, amountIn);
+            (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(
+                usdEquivalentToken,
+                token,
+                amountIn
+            );
         } else {
             _amount = amountIn;
             _lastUpdatedAt = block.timestamp;

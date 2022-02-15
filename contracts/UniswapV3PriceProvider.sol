@@ -34,7 +34,7 @@ contract UniswapV3PriceProvider is IPriceProvider, Governable {
      * @notice Update TWAP period
      * @param _newTwapPeriod The new period
      */
-    function updateTwapPeriod(uint32 _newTwapPeriod) public onlyGovernor {
+    function updateTwapPeriod(uint32 _newTwapPeriod) external onlyGovernor {
         emit TwapPeriodUpdated(twapPeriod, _newTwapPeriod);
         twapPeriod = _newTwapPeriod;
     }
@@ -44,7 +44,7 @@ contract UniswapV3PriceProvider is IPriceProvider, Governable {
         address _tokenIn,
         address _tokenOut,
         uint256 _amountIn
-    ) public view returns (uint256 _amountOut, uint256 _lastUpdatedAt) {
+    ) external view returns (uint256 _amountOut, uint256 _lastUpdatedAt) {
         _amountOut = crossPoolOracle.assetToAsset(_tokenIn, _amountIn, _tokenOut, twapPeriod);
         _lastUpdatedAt = block.timestamp;
     }
