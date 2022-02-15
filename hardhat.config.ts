@@ -12,6 +12,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+const junk = 'test test test test test test test test test test test junk'
 const localhost = 'http://localhost'
 
 const config: HardhatUserConfig = {
@@ -30,6 +31,7 @@ const config: HardhatUserConfig = {
       url: process.env.NODE_URL,
       chainId: 1,
       gas: 6700000,
+      accounts: {mnemonic: process.env.MNEMONIC || junk},
     },
   },
   paths: {
