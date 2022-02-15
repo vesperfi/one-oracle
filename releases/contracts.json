@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "networks": {
+    "mainnet": {
+      "chainlinkPriceProvider": "0x6D514bD3b9fd89a2147938F92b606c05DCe443D0"
+    }
+  }
+}
