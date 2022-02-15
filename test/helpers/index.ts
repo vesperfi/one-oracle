@@ -17,8 +17,9 @@ export const enableForking = async (): Promise<void> => {
       {
         forking: {
           jsonRpcUrl: process.env.NODE_URL,
+          // using 13359500 as default block if not provided
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          blockNumber: parseInt(process.env.BLOCK_NUMBER!),
+          blockNumber: parseInt(process.env.BLOCK_NUMBER!) || 13359500 
         },
       },
     ],

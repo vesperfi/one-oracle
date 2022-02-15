@@ -12,8 +12,8 @@ import "./lib/OracleHelpers.sol";
  * @title Oracle contract that encapsulates 3rd-party oracles.
  */
 contract Oracle is IOracle, Governable {
-    address public usdToken;
-   
+    address public usdEquivalentToken;
+
     mapping(Provider => address) public priceProvider;
 
     event PriceProvideUpdated(Provider _provider, address _oldPriceProvider, address _newPriceProvider);
@@ -30,12 +30,12 @@ contract Oracle is IOracle, Governable {
     }
 
     /**
-     * @notice For Dex price provider, we may want to use stable token as USD token to get price in USD
+     * @notice For Dex price provider, we may want to use stable token as USD token to get price in USD.
      * @dev Allow to set 0x0 in case we don't want to support USD price from UNI2 and UNI3.
-     * @param _usdToken Preferred stable token address
+     * @param _usdEquivalentToken Preferred stable token address
      */
-    function setUSDToken(address _usdToken) external onlyGovernor {
-        usdToken = _usdToken;
+    function setUSDEquivalentToken(address _usdEquivalentToken) external onlyGovernor {
+        usdEquivalentToken = _usdEquivalentToken;
     }
 
     /// @inheritdoc IOracle
@@ -49,6 +49,8 @@ contract Oracle is IOracle, Governable {
         return IPriceProvider(priceProvider[_provider]).quote(_assetIn, _assetOut, _amountIn);
     }
 
+    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3. 
+    /// Stable coin may lose pegging on-chain and may not be equal to $1.
     /// @inheritdoc IOracle
     function quoteTokenToUsd(
         address token,
@@ -59,13 +61,20 @@ contract Oracle is IOracle, Governable {
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteTokenToUsd(token, _amount);
         }
-        require(usdToken != address(0), "not-supported");
+        require(usdEquivalentToken != address(0), "not-supported");
         uint256 amountOut;
-        (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(token, usdToken, _amount);
+        if (usdEquivalentToken != token) {
+            (amountOut, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(token, usdEquivalentToken, _amount);
+        } else {
+            amountOut = _amount;
+            _lastUpdatedAt = block.timestamp;
+        }
         // USD amount is 8 decimal
-        _amountInUsd = OracleHelpers.scaleDecimal(amountOut, IERC20Metadata(usdToken).decimals(), 8);
+        _amountInUsd = OracleHelpers.scaleDecimal(amountOut, IERC20Metadata(usdEquivalentToken).decimals(), 8);
     }
 
+    /// This method internally get quote using stable coin like DAI, USDC, USDT if provider is UNI2 or UNI3. 
+    /// Stable coin may lose pegging on-chain and may not be equal to $1.
     /// @inheritdoc IOracle
     function quoteUsdToToken(
         address token,
@@ -76,9 +85,14 @@ contract Oracle is IOracle, Governable {
         if (_provider == Provider.CHAINLINK) {
             return IPriceProvider(priceProvider[_provider]).quoteUsdToToken(token, _amountInUsd);
         }
-        require(usdToken != address(0), "not-supported");
+        require(usdEquivalentToken != address(0), "not-supported");
         // USD amount is 8 decimal
-        uint256 amountIn = OracleHelpers.scaleDecimal(_amountInUsd, 8, IERC20Metadata(usdToken).decimals());
-        (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(usdToken, token, amountIn);
+        uint256 amountIn = OracleHelpers.scaleDecimal(_amountInUsd, 8, IERC20Metadata(usdEquivalentToken).decimals());
+        if (usdEquivalentToken != token) {
+            (_amount, _lastUpdatedAt) = IPriceProvider(priceProvider[_provider]).quote(usdEquivalentToken, token, amountIn);
+        } else {
+            _amount = amountIn;
+            _lastUpdatedAt = block.timestamp;
+        }
     }
 }

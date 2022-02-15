@@ -10,7 +10,6 @@ import "./dependencies/uniswap/v2-periphery/libraries/UniswapV2Library.sol";
 import "./dependencies/uniswap/v2-periphery/interfaces/IUniswapV2Router02.sol";
 import "./access/Governable.sol";
 import "./interface/IPriceProvider.sol";
-
 /**
  * @title UniswapV2 (and forks) TWAP Oracle implementation
  * Based on https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol
@@ -64,7 +63,7 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
      */
     function update(address _token0, address _token1) public {
         address _pair = UniswapV2Library.pairFor(factory, _token0, _token1);
-        if (observations[_pair].blockTimestampLast != 0) {
+        if (observations[_pair].blockTimestampLast == 0) {
             _addOracleFor(IUniswapV2Pair(_pair));
         }
         _updateIfNeeded(_pair);
@@ -143,7 +142,6 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
         (uint256 price0Cumulative, uint256 price1Cumulative, uint32 blockTimestamp) = UniswapV2OracleLibrary
             .currentCumulativePrices(_pair);
         uint32 timeElapsed = blockTimestamp - _observation.blockTimestampLast; // overflow is desired
-
         // ensure that at least one full period has passed since the last update
         if (timeElapsed < twapPeriod) return false;
 
@@ -155,11 +153,9 @@ contract UniswapV2LikePriceProvider is IPriceProvider, Governable {
         _observation.price1Average = FixedPoint.uq112x112(
             uint224((price1Cumulative - _observation.price1CumulativeLast) / timeElapsed)
         );
-
         _observation.price0CumulativeLast = price0Cumulative;
         _observation.price1CumulativeLast = price1Cumulative;
         _observation.blockTimestampLast = blockTimestamp;
-
         return true;
     }
 }
